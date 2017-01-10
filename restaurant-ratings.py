@@ -4,6 +4,8 @@ import sys
 
 
 def create_ratings_dict():
+    """Reads file and makes dictionary from contents."""
+
     file_open = open(sys.argv[1])
     rest_ratings = {}
 
@@ -15,13 +17,18 @@ def create_ratings_dict():
 
 
 def add_user_rating(rest_ratings):
+    """Prompts user for rating and adds to dictionary."""
+
     user_restaurant = raw_input("What restaurant do you want to rate? ")
+    user_restaurant = user_restaurant[0].upper() + user_restaurant[1:]
     user_rating = raw_input("What's your rating for {}? ".format(user_restaurant))
 
     rest_ratings[user_restaurant] = user_rating
 
 
 def print_sorted_reviews(rest_ratings):
+    """Sorts and prints reviews."""
+
     restaurant_names = sorted(rest_ratings)
 
     for restaurant in restaurant_names:
@@ -33,6 +40,8 @@ def print_sorted_reviews(rest_ratings):
 
 
 def perform_user_choice():
+    """Prompts user to choose between data visualization, data append, and quit."""
+
     rest_ratings = create_ratings_dict()
     while True:
         print
