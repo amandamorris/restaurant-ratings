@@ -9,9 +9,19 @@ def create_ratings_dict():
 
     for line in file_open:
         line = line.rstrip()
-        token = line.split(":")
-        rest_ratings[token[0]] = token[1]
-    for restaurant in sorted(rest_ratings):
+        restaurant, rating = line.split(":")
+        rest_ratings[restaurant] = rating
+
+    user_restaurant = raw_input("What restaurant do you want to rate? ")
+    user_rating = raw_input("What's your rating for {}? ".format(user_restaurant))
+
+    rest_ratings[user_restaurant] = user_rating
+
+    print
+
+    restaurant_names = sorted(rest_ratings)
+
+    for restaurant in restaurant_names:
         print "{} is rated at {}.".format(restaurant, rest_ratings[restaurant])
 
     # this works too:
